@@ -4,6 +4,8 @@ import java.awt.AWTException;
 import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Graphics;
+import java.awt.MenuItem;
+import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
@@ -76,6 +78,17 @@ class MainFrame extends JFrame {
 				}
 			}
 	    });
+		//add popup menu to tray
+		PopupMenu popupMenu = new PopupMenu();
+	    MenuItem item = new MenuItem("Exit");
+	    item.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		dispose();
+	    		System.exit(0);
+	    	}
+	    });
+	    popupMenu.add(item);
+	    trayIcon.setPopupMenu(popupMenu);
 	}
 	
 	private void removeTrayIcon() {
