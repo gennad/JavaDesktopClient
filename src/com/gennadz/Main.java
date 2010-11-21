@@ -4,10 +4,12 @@ import java.awt.AWTException;
 import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Graphics;
+import java.awt.KeyboardFocusManager;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -32,6 +34,17 @@ public class Main {
 					frame = new MainFrame();
 					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					frame.setVisible(true);
+					
+					try {
+						//do what you want to do before sleeping
+						Thread.currentThread().sleep(5000);//sleep for 5000 ms
+							System.out.println("Waking up...");
+							Window window = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
+							String s = "";
+							//String windowTitle = window.getName();
+						}
+						catch(InterruptedException ie){
+						}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
